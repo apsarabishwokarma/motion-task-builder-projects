@@ -47,7 +47,7 @@ export default function TaskCard({
       }}
     >
       <div className="flex">
-        <h3 className="font-semibold text-black">{title}</h3>
+        <h3 className="font-semibold text-black overflow-hidden">{title}</h3>
         <div className="flex space-x-2 ml-1">
           <button className="text-gray-500 hover:text-blue-600">
             <Edit size={16} />
