@@ -18,11 +18,20 @@ export default function TaskCard({
     setDraggedOverTaskId,
     setColumns,
     removeTask,
+    draggedTaskHeight,
+    draggedOverTaskId,
+    setDraggedOverColumn,
   } = useKanbanContext();
   return (
     <div
+      id={`task-card-${id}`}
       draggable
-      className="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500"
+      className={
+        "bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500 transition-all mt-3"
+      }
+      style={{
+        marginTop: draggedOverTaskId === id ? draggedTaskHeight : 12,
+      }}
       onDrag={() => {
         setDraggedTaskId(id);
       }}
@@ -33,17 +42,29 @@ export default function TaskCard({
         setColumns((prev) => {
           return prev.map((p) => {
             if (p.title === draggedOverColumn) {
+              const draggedOverTaskIndex = p.tasks.findIndex(
+                (t) => t.id === draggedOverTaskId
+              );
+              const downTasks = p.tasks.slice(draggedOverTaskIndex);
+              const upTasks = p.tasks.slice(0, draggedOverTaskIndex);
+
               return {
                 ...p,
                 tasks: p.tasks.some((t) => t.id === task.id) //Check if task already exists
                   ? p.tasks //If exists, keep same tasks
-                  : [...p.tasks, task], // Otherwise, add task
+                  : [...upTasks, task, ...downTasks], // Otherwise, add task
               };
             }
 
             return p;
           });
         });
+        if (columnTitle !== draggedOverColumn) {
+          removeTask(id, columnTitle);
+        }
+        setDraggedOverTaskId(undefined);
+        setDraggedOverColumn(undefined);
+        setDraggedTaskId(undefined);
       }}
     >
       <div className="flex">
@@ -61,7 +82,6 @@ export default function TaskCard({
         </div>
       </div>
       <p className="text-sm text-gray-600 mt-1">{description}</p>
-
       {tag && (
         <div className="mt-3 flex items-center space-x-2text-xs">
           <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-md">

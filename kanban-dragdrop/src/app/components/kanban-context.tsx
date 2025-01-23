@@ -6,6 +6,7 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from "react";
 import { Column, dummyColumns } from "../data/columns-data";
@@ -18,6 +19,7 @@ export type KanbanContextType = {
   draggedOverColumn?: "Not Started" | "Pending" | "Ready" | "Done";
   draggedOverTaskId?: string;
   setDraggedTaskId: Dispatch<SetStateAction<undefined | string>>;
+  draggedTaskHeight?: number;
   setDraggedOverColumn: Dispatch<
     SetStateAction<undefined | "Not Started" | "Pending" | "Ready" | "Done">
   >;
@@ -40,6 +42,7 @@ export default function KanbanProvider({ children }: { children: ReactNode }) {
   const [draggedOverTaskId, setDraggedOverTaskId] = useState<
     undefined | string
   >();
+  const [draggedTaskHeight, setDraggedTaskHeight] = useState(0);
 
   function removeTask(id: string, columnTitle: string) {
     setColumns((prevItems) => {
@@ -57,6 +60,17 @@ export default function KanbanProvider({ children }: { children: ReactNode }) {
     });
   }
 
+  useEffect(() => {
+    if (draggedTaskId) {
+      const element = document.getElementById(`task-card-${draggedTaskId}`);
+
+      if (element) {
+        const height = element.clientHeight;
+        setDraggedTaskHeight(height);
+      }
+    }
+  }, [draggedTaskId]);
+
   // Return the context provider
   return (
     <KanbanContext.Provider
@@ -70,6 +84,7 @@ export default function KanbanProvider({ children }: { children: ReactNode }) {
         draggedOverTaskId,
         setDraggedOverTaskId,
         removeTask,
+        draggedTaskHeight,
       }}
     >
       {children}
