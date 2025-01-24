@@ -6,6 +6,8 @@ export interface TaskCardProps {
   tag: string;
 }
 
+// export type UpdateTaskProps = Partial<TaskCardProps>;
+
 export interface Column {
   title: string;
   color: string;
