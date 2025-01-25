@@ -34,6 +34,8 @@ export const KanbanContext = createContext<KanbanContextType | undefined>(
 
 // Creating Provider
 export default function KanbanProvider({ children }: { children: ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
   const [columns, setColumns] = useState<Column[]>(dummyColumns);
   const [draggedTaskId, setDraggedTaskId] = useState<undefined | string>();
   const [draggedOverColumn, setDraggedOverColumn] = useState<
@@ -70,6 +72,23 @@ export default function KanbanProvider({ children }: { children: ReactNode }) {
       }
     }
   }, [draggedTaskId]);
+
+  useEffect(() => {
+    const data = localStorage.getItem("columns");
+
+    if (data) {
+      setColumns(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) {
+      setMounted(true);
+      return;
+    }
+
+    localStorage.setItem("columns", JSON.stringify(columns));
+  }, [columns, mounted]);
 
   // Return the context provider
   return (
