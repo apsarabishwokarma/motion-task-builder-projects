@@ -10,7 +10,7 @@ const Home: React.FC = () => {
         </p>
         <h1 className="font-nohemi text-[32px] font-bold leading-[38.4px] text-left text-[#2b2b2b]">
           Dive Into{" "}
-          <span className="font-nohemi text-[32px] font-bold leading-[38.4px] text-left text-[#2b2b2b]">
+          <span className="font-nohemi text-[32px] font-bold leading-[38.4px] text-left text-[#1DA077]">
             What’s Hot Right Now!
           </span>{" "}
           🔥
