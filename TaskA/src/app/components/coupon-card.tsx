@@ -15,14 +15,19 @@ const CouponCard: React.FC<CouponCardProps> = ({
 }) => {
   return (
     <div
-      className="bg-red-100 text-red-600 w-[180px] h-[250px] rounded-[20px] p-4 flex flex-col justify-between items-center cursor-pointer transform hover:scale-105 transition"
+      className="bg-[#f9ebec] text-[#c33241] w-[280px] h-[461px] rounded-[32px] p-4 cursor-pointer flex flex-col gap-4 justify-evenly"
       onClick={onClick}
     >
-      <p className="text-lg font-bold rotate-90">{title}</p>
-      <p className="text-sm rotate-90">{subtitle}</p>
-      <div className="flex items-center">
-        <h1 className="text-5xl font-bold">{number}</h1>
-        <p className="text-2xl font-bold">+</p>
+      <div className="flex flex-col items-center rotate-[270deg]">
+        <p className="text-lg font-extrabold text-center">{title}</p>
+        <p className="text-sm font-normal text-center">{subtitle}</p>
+      </div>
+
+      <div className="flex flex-col items-center justify-center">
+        <div className="flex items-center justify-center">
+          <h1 className="text-8xl font-bold">{number}</h1>
+          <p className="text-2xl font-bold ml-2">+</p>
+        </div>
       </div>
     </div>
   );

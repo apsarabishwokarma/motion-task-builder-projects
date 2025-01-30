@@ -16,7 +16,7 @@ const initialCoupons = [
   },
   {
     title: "Ongoing Courses",
-    subtitle: "Currently happening—don’t miss out on the action!",
+    subtitle: "Currently happening—don't miss out on the action!",
     number: 10,
   },
 ];
