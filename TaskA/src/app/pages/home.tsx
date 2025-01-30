@@ -3,16 +3,20 @@ import CouponsList from "../components/coupon-list";
 
 const Home: React.FC = () => {
   return (
-    <div className="p-10">
-      <p className="text-lg text-gray-600">
-        Explore our classes and master trending skills!
-      </p>
-      <h1 className="text-2xl font-bold">
-        Dive Into{" "}
-        <span className="text-green-500 font-bold">What’s Hot Right Now!</span>{" "}
-        🔥
-      </h1>
-      <CouponsList />
+    <div className="text-center px-[112px] py-[60px]">
+      <div className="flex flex-col items-start gap-4">
+        <p className="font-outfit text-[24px] font-normal leading-[28.8px] text-left text-[#414141]">
+          Explore our classes and master trending skills!
+        </p>
+        <h1 className="font-nohemi text-[32px] font-bold leading-[38.4px] text-left text-[#2b2b2b]">
+          Dive Into{" "}
+          <span className="font-nohemi text-[32px] font-bold leading-[38.4px] text-left text-[#2b2b2b]">
+            What’s Hot Right Now!
+          </span>{" "}
+          🔥
+        </h1>
+        <CouponsList />
+      </div>
     </div>
   );
 };

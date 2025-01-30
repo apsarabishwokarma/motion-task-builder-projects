@@ -34,14 +34,15 @@ const CouponsList: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-6">
-      <CouponBanner
-        title={bannerCoupon.title}
-        subtitle={bannerCoupon.subtitle}
-        number={bannerCoupon.number}
-        onClick={() => handleSwap(0)}
-      />
-      <div className="flex gap-4">
+    <div className="flex gap-8 justify-center mt-12">
+      <div className="flex items-center gap-8 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+        <CouponBanner
+          title={bannerCoupon.title}
+          subtitle={bannerCoupon.subtitle}
+          number={bannerCoupon.number}
+          onClick={() => handleSwap(0)}
+        />
+
         {smallCoupons.map((coupon, index) => (
           <CouponCard
             key={index}
