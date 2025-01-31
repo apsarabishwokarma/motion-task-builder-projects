@@ -1,10 +1,6 @@
-interface TaskCardProps {
-  title: string;
-  description: string;
-  status?: string;
-  tag: string;
-}
 // const TaskCard: React.FC<TaskCardProps> = ({ title, description, status, tag }) => {
+
+import { TaskCardProps } from "../data/columns-data";
 
 export default function TaskCard({ title, description, tag }: TaskCardProps) {
   return (

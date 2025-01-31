@@ -1,4 +1,4 @@
-export interface Task {
+export interface TaskCardProps {
   title: string;
   description: string;
   status: string;
@@ -8,7 +8,7 @@ export interface Task {
 export interface Column {
   title: string;
   color: string;
-  tasks: Task[];
+  tasks: TaskCardProps[];
 }
 
 export const columns: Column[] = [
