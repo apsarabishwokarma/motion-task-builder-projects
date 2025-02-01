@@ -1,6 +1,6 @@
-// const TaskCard: React.FC<TaskCardProps> = ({ title, description, status, tag }) => {
-
 import { TaskCardProps } from "../data/columns-data";
+
+// const TaskCard: React.FC<TaskCardProps> = ({ title, description, status, tag }) => {
 
 export default function TaskCard({ title, description, tag }: TaskCardProps) {
   return (
