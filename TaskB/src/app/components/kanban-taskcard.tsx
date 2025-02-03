@@ -4,7 +4,10 @@ import { TaskCardProps } from "../data/columns-data";
 
 export default function TaskCard({ title, description, tag }: TaskCardProps) {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500">
+    <div
+      draggable
+      className="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500"
+    >
       <h3 className="font-semibold text-black">{title}</h3>
       <p className="text-sm text-gray-600 mt-1">{description}</p>
 

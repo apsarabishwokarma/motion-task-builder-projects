@@ -11,7 +11,21 @@ export interface Column {
   tasks: TaskCardProps[];
 }
 
-export const columns: Column[] = [
+// const data: {
+//   title: string;
+//   description: string;
+//   status: "not-started" | "pending" | "done" | "ready";
+//   tag: string;
+// }[] = [
+//   {
+//     title: "Make a nice background",
+//     description: "Help the UX",
+//     status: "not-started",
+//     tag: "Beta version releasing",
+//   },
+// ];
+
+export const dummyColumns: Column[] = [
   {
     title: "Not Started",
     color: "bg-red-100",
