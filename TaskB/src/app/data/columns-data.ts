@@ -1,4 +1,5 @@
 export interface TaskCardProps {
+  id: string;
   title: string;
   description: string;
   status: string;
@@ -31,9 +32,10 @@ export const dummyColumns: Column[] = [
     color: "bg-red-100",
     tasks: [
       {
+        id: "1",
         title: "Make a nice background",
         description: "Help the UX",
-        status: "Not started",
+        status: "Not Started",
         tag: "Beta version releasing",
       },
     ],
@@ -43,6 +45,7 @@ export const dummyColumns: Column[] = [
     color: "bg-purple-100",
     tasks: [
       {
+        id: "2",
         title: "Make a simple Kanban",
         description: "For Figma UX",
         status: "Ready",
@@ -55,6 +58,7 @@ export const dummyColumns: Column[] = [
     color: "bg-blue-100",
     tasks: [
       {
+        id: "3",
         title: "Fix auto height",
         description: "Fix swim lanes",
         status: "In progress",
@@ -67,6 +71,7 @@ export const dummyColumns: Column[] = [
     color: "bg-green-100",
     tasks: [
       {
+        id: "4",
         title: "Make avatar tiles",
         description: "Avatar UX",
         status: "Done",

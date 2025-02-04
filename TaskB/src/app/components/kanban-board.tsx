@@ -16,12 +16,17 @@ export default function KanbanBoard() {
 
   // Handle adding task
   const handleAddTask = () => {
+    if (!newTask.title) {
+      alert("Please enter title");
+      return;
+    }
+
     setColumns((prev) => {
       return prev.map((p) => {
         if (p.title === "Not Started") {
           return {
             ...p,
-            tasks: [...p.tasks, { ...newTask }],
+            tasks: [...p.tasks, { id: new Date().toISOString(), ...newTask }],
           };
         }
 
