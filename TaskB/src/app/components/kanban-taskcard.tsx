@@ -11,6 +11,7 @@ export default function TaskCard(task: TaskCardProps) {
     draggedOverColumn,
     setDraggedOverTaskId,
     setColumns,
+    removeTask,
   } = useKanbanContext();
   return (
     <div
@@ -40,7 +41,10 @@ export default function TaskCard(task: TaskCardProps) {
       <div className="flex">
         <h3 className="font-semibold text-black">{title}</h3>
         <div className="flex space-x-2 ml-1">
-          <button className="text-gray-500 hover:text-blue-600">
+          <button
+            onClick={() => removeTask(id, title)}
+            className="text-gray-500 hover:text-blue-600"
+          >
             <Edit size={16} />
           </button>
           <button className="text-gray-500 hover:text-red-600">

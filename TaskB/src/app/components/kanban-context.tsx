@@ -22,6 +22,7 @@ export type KanbanContextType = {
     SetStateAction<undefined | "Not Started" | "Pending" | "Ready" | "Done">
   >;
   setDraggedOverTaskId: Dispatch<SetStateAction<undefined | string>>;
+  removeTask: (id: string, columnTitle: string) => void;
 };
 
 // Creating Context
@@ -40,6 +41,22 @@ export default function KanbanProvider({ children }: { children: ReactNode }) {
     undefined | string
   >();
 
+  function removeTask(id: string, columnTitle: string) {
+    setColumns((prevItems) => {
+      return prevItems.map((p) => {
+        if (p.title === columnTitle) {
+          return {
+            ...p,
+            tasks: p.tasks.filter((t) => {
+              return t.id !== id;
+            }),
+          };
+        }
+        return p;
+      });
+    });
+  }
+
   // Return the context provider
   return (
     <KanbanContext.Provider
@@ -52,6 +69,7 @@ export default function KanbanProvider({ children }: { children: ReactNode }) {
         setDraggedOverColumn,
         draggedOverTaskId,
         setDraggedOverTaskId,
+        removeTask,
       }}
     >
       {children}
