@@ -29,7 +29,9 @@ export default function TaskCard(task: TaskCardProps) {
             if (p.title === draggedOverColumn) {
               return {
                 ...p,
-                tasks: [...p.tasks, task],
+                tasks: p.tasks.some((t) => t.id === task.id) //Check if task already exists
+                  ? p.tasks //If exists, keep same tasks
+                  : [...p.tasks, task], // Otherwise, add task
               };
             }
 
@@ -42,7 +44,7 @@ export default function TaskCard(task: TaskCardProps) {
         <h3 className="font-semibold text-black">{title}</h3>
         <div className="flex space-x-2 ml-1">
           <button
-            onClick={() => removeTask(id, title)}
+            onClick={() => removeTask(id, columnTitle)}
             className="text-gray-500 hover:text-blue-600"
           >
             <Edit size={16} />
