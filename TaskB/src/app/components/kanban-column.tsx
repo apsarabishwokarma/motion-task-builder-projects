@@ -15,7 +15,7 @@ export default function KanbanColumn({ title, color, tasks }: Column) {
       <h2 className="text-lg font-semibold mb-3 text-black">{title}</h2>
       <div className="space-y-3">
         {tasks.map((task, index) => (
-          <TaskCard key={index} {...task} />
+          <TaskCard key={index} task={task} columnTitle={title} />
         ))}
       </div>
     </div>

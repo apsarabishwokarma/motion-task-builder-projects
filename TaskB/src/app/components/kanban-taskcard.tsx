@@ -4,7 +4,13 @@ import { useKanbanContext } from "./kanban-context";
 
 // const TaskCard: React.FC<TaskCardProps> = ({ title, description, status, tag }) => {
 
-export default function TaskCard(task: TaskCardProps) {
+export default function TaskCard({
+  task,
+  columnTitle,
+}: {
+  task: TaskCardProps;
+  columnTitle: string;
+}) {
   const { title, description, tag, id } = task;
   const {
     setDraggedTaskId,
@@ -43,13 +49,13 @@ export default function TaskCard(task: TaskCardProps) {
       <div className="flex">
         <h3 className="font-semibold text-black">{title}</h3>
         <div className="flex space-x-2 ml-1">
-          <button
-            onClick={() => removeTask(id, columnTitle)}
-            className="text-gray-500 hover:text-blue-600"
-          >
+          <button className="text-gray-500 hover:text-blue-600">
             <Edit size={16} />
           </button>
-          <button className="text-gray-500 hover:text-red-600">
+          <button
+            onClick={() => removeTask(id, columnTitle)}
+            className="text-gray-500 hover:text-red-600"
+          >
             <Trash2 size={16} />
           </button>
         </div>
