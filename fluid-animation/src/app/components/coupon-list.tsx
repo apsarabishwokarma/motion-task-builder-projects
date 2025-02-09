@@ -35,7 +35,7 @@ const CouponsList: React.FC = () => {
 
   return (
     <div className="flex gap-8 justify-center mt-12">
-      <div className="flex items-center gap-8 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+      <div className="flex items-center gap-8 cursor-pointer transition-transform duration-300 ease-in-out">
         <CouponBanner
           title={bannerCoupon.title}
           subtitle={bannerCoupon.subtitle}

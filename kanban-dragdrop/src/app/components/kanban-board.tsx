@@ -1,5 +1,6 @@
 "use client";
 
+import { Search } from "lucide-react";
 import { useState } from "react";
 import Column from "./kanban-column";
 import { useKanbanContext } from "./kanban-context";
@@ -13,6 +14,7 @@ export default function KanbanBoard() {
     status: "Not Started",
     tag: "",
   });
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Handle adding task
   const handleAddTask = () => {
@@ -36,14 +38,35 @@ export default function KanbanBoard() {
     setIsOpen(false);
     setNewTask({ title: "", description: "", status: "Not Started", tag: "" });
   };
+
+  const filteredColumns = columns.map((col) => ({
+    ...col,
+    tasks: col.tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchQuery.toLowerCase())
+    ),
+  }));
+
   return (
     <div className="p-4">
-      <button
-        className="text-lg font-bold w-[30%] bg-[#FFF6E1] text-black hover:bg-[#CCCCFF] mb-2 border-none rounded-md p-2  mt-2"
-        onClick={() => setIsOpen(true)}
-      >
-        Add New Task &#x2b;
-      </button>
+      <div className="flex justify-between md:flex-row flex-col">
+        <button
+          className="text-lg font-bold bg-[#FFF6E1] text-black hover:bg-[#CCCCFF] m-2 border-none rounded-md py-2 px-6"
+          onClick={() => setIsOpen(true)}
+        >
+          Add New Task &#x2b;
+        </button>
+        <div className="flex max-w-xs items-center border border-gray-300 px-4 rounded-full text-gray-800">
+          <input
+            placeholder="Search task"
+            className="flex-1 border-r focus:outline-none "
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className="flex items-center pl-2">
+            <Search />
+          </button>
+        </div>
+      </div>
 
       {/* form for adding task*/}
       {isOpen && (
@@ -96,8 +119,13 @@ export default function KanbanBoard() {
         </div>
       )}
 
-      <div className="flex flex-wrap md:flex-nowrap gap-4 overflow-x-auto p-4">
+      {/* <div className="flex flex-wrap md:flex-nowrap gap-4 overflow-x-auto p-4">
         {columns.map((col, index) => (
+          <Column key={index} {...col} />
+        ))}
+      </div> */}
+      <div className="flex flex-wrap md:flex-nowrap gap-4 overflow-x-auto p-4">
+        {filteredColumns.map((col, index) => (
           <Column key={index} {...col} />
         ))}
       </div>
