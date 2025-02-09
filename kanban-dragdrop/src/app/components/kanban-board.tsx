@@ -55,7 +55,7 @@ export default function KanbanBoard() {
         >
           Add New Task &#x2b;
         </button>
-        <div className="flex max-w-xs items-center border border-gray-300 px-4 rounded-full text-gray-800">
+        <div className="flex max-w-xs items-center border border-gray-300 p-3 rounded-full text-gray-800">
           <input
             placeholder="Search task"
             className="flex-1 border-r focus:outline-none "
