@@ -24,7 +24,7 @@ cd motion-task-builder
 
 ---
 
-## **🚀 Running Individual Projects**
+## ** Running Individual Projects**
 
 Each project is inside its own folder. To run a specific project, follow these steps:
 
